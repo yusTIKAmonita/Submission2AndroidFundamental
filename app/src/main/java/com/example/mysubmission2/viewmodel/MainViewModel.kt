@@ -24,7 +24,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun setUserMain () {
        val ListUser = ArrayList<UserData>()
 
-       val apiKey = "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"
+       val apiKey = "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"
        val url = "https://api.github.com/users"
 
        val client = AsyncHttpClient()

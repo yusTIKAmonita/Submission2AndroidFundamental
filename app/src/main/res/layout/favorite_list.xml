@@ -12,6 +12,7 @@
     android:background="@color/nude_light">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tv_list_favorite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"

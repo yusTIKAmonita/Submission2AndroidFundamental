@@ -23,7 +23,7 @@ class FollowViewModel(application: Application) : AndroidViewModel(application) 
         val url = "https://api.github.com/users/$username/$tab"
 
         val listUserData = ArrayList<UserData>()
-        val apiKey = "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"
+        val apiKey = "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"
 
         val client = AsyncHttpClient()
 

@@ -1,6 +1,7 @@
 package com.example.mysubmission2
 
 import android.database.Cursor
+import android.provider.BaseColumns._ID
 import com.example.mysubmission2.database.DatabaseFavorite
 
 object MappingHelper {
@@ -9,6 +10,7 @@ object MappingHelper {
 
         favoriteCursor?.apply {
             while (moveToNext()) {
+                val id = getInt(getColumnIndexOrThrow(_ID))
                 val username = getString(getColumnIndexOrThrow(DatabaseFavorite.FavColumns.USERNAME))
                 val name = getString(getColumnIndexOrThrow(DatabaseFavorite.FavColumns.NAME))
                 val location = getString(getColumnIndexOrThrow(DatabaseFavorite.FavColumns.USER_LOCATION))
@@ -18,6 +20,7 @@ object MappingHelper {
 
                 favoriteList.add (
                         FavoriteData(
+                                id,
                                 username,
                                 name,
                                 location,

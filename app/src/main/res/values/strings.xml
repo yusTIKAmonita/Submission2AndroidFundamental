@@ -21,4 +21,9 @@
     <string name="delet_favorite">Delete Favorite</string>
     <string name="add_favorite">Add Favorite</string>
     <string name="empty_favorite">Empty Favorite</string>
+    <string name="info_favorite">Favorite Info</string>
+    <string name="loading_data">Loading Data</string>
+    <string name="favored_user">Favored User</string>
+    <string name="set_reminder">Set Reminder</string>
+    <string name="daily_reminder">Daily Reminder</string>
 </resources>

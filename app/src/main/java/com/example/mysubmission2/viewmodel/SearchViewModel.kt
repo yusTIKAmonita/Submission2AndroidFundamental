@@ -22,7 +22,7 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
     fun setUserSearch (username: String) {
         val ListUser = ArrayList<UserData>()
 
-        val apiKey = "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"
+        val apiKey = "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"
         val url = "https://api.github.com/search/users?q=$username"
 
         val client = AsyncHttpClient()

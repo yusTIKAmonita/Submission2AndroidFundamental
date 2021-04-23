@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.MySubmission2">
-        <activity android:name=".FavoriteActivity"></activity>
+        <activity android:name=".NotificationActivity"></activity>
+        <activity android:name=".FavoriteActivity" />
         <activity android:name=".DetailActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

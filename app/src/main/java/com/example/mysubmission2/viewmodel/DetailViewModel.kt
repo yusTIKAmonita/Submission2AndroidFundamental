@@ -17,7 +17,7 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
 
     fun setUserDetail(username: String) {
 
-        val apiKey = "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"
+        val apiKey = "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"
         val url = "https://api.github.com/users/$username"
 
         val client = AsyncHttpClient()
