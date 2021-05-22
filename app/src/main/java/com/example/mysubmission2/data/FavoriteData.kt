@@ -1,4 +1,4 @@
-package com.example.mysubmission2
+package com.example.mysubmission2.data
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
@@ -10,8 +10,8 @@ class FavoriteData(
         var name: String? = null,
         var userLocation: String? = null,
         var photoUrl: String? = null,
-        var publicRepos: Int? = null,
-        var favorite: String? = null,
+        var publicRepos: String? = null,
+        var followers: String? = null,
         var following: String? = null,
-        var followers: String? = null
+        var favorite: String? = null
 ): Parcelable

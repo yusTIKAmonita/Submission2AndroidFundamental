@@ -3,8 +3,8 @@ package com.example.mysubmission2.adapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.mysubmission2.FollowersFragment
-import com.example.mysubmission2.FollowingFragment
+import com.example.mysubmission2.ui.FollowersFragment
+import com.example.mysubmission2.ui.FollowingFragment
 
 class DetailSectionPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
 

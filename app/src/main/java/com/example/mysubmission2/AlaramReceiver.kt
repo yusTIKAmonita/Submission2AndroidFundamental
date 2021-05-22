@@ -7,10 +7,10 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Build
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
+import com.example.mysubmission2.ui.MainActivity
 import java.util.*
 
 class AlaramReceiver: BroadcastReceiver() {

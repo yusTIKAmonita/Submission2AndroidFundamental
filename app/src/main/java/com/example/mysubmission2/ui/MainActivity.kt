@@ -1,4 +1,4 @@
-package com.example.mysubmission2
+package com.example.mysubmission2.ui
 
 import android.app.Activity
 import android.app.SearchManager
@@ -13,7 +13,10 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mysubmission2.NotificationActivity
+import com.example.mysubmission2.R
 import com.example.mysubmission2.adapter.RecyclerViewAdapter
+import com.example.mysubmission2.data.UserData
 import com.example.mysubmission2.databinding.ActivityMainBinding
 import com.example.mysubmission2.viewmodel.MainViewModel
 import com.example.mysubmission2.viewmodel.SearchViewModel
@@ -115,7 +118,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(mIntent)
             }
 
-            R.id.action_set_reminder-> {
+            R.id.action_set_reminder -> {
                 val mIntent = Intent(this, NotificationActivity::class.java)
                 startActivity(mIntent)
             }

@@ -2,21 +2,22 @@ package com.example.mysubmission2.adapter
 
 import android.app.Activity
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.mysubmission2.*
+import com.example.mysubmission2.data.FavoriteData
+import com.example.mysubmission2.data.UserData
 import com.example.mysubmission2.databinding.FavoriteListBinding
-import java.util.*
+import com.example.mysubmission2.ui.DetailActivity
 import kotlin.collections.ArrayList
 
-class FavoriteAdapter(var activity: Activity): RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>() {
+class FavoriteAdapter(private var activity: Activity): RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>() {
+
+    private lateinit var onItemClickCallBack: OnItemClickCallBack
 
     var listFavorite = ArrayList<FavoriteData>()
     set(listFavorite) {
@@ -60,21 +61,38 @@ class FavoriteAdapter(var activity: Activity): RecyclerView.Adapter<FavoriteAdap
     inner class FavoriteViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         private val binding = FavoriteListBinding.bind(itemView)
         fun bind (favorite: FavoriteData){
+            Glide.with(itemView.context)
+                    .load(favorite.photoUrl)
+                    .apply (RequestOptions().override(250, 250))
+                    .into(binding.imgPhoto)
             binding. tvItemUsername.text = favorite.username
             binding.tvItemName.text = favorite.name
             binding.tvItemLocation.text = favorite.userLocation
-            binding.tvListFavorite.setOnClickListener(CustomOnItemClickListener(adapterPosition, object: CustomOnItemClickListener.OnItemClickCallBack{
+//            itemView.setOnClickListener{
+//                onItemClickCallBack.onItemClicked(favorite)
+            itemView.setOnClickListener(CustomOnItemClickListener(adapterPosition, object: CustomOnItemClickListener.OnItemClickCallBack{
                 override fun onItemClicked(v: View, position: Int) {
                     val intent = Intent(activity, DetailActivity::class.java)
                     intent.putExtra(DetailActivity.EXTRA_POSITION, position)
                     intent.putExtra(DetailActivity.EXTRA_NOTE, favorite)
-                    activity.startActivityForResult(intent, DetailActivity.REQUEST_UPDATE)
+                    activity.startActivity(intent)
+//                    activity.startActivityForResult(intent, DetailActivity.REQUEST_UPDATE)
                 }
             }))
         }
 
     }
 
+
+
+    fun setOnItemClickCallBack(onItemClickCallBack:OnItemClickCallBack) {
+        this.onItemClickCallBack = onItemClickCallBack
+    }
+
+    interface OnItemClickCallBack {
+        fun onItemClicked(data: FavoriteData)
+
+    }
 }
 //class FavoriteAdapter(var listFavorite: ArrayList<FavoriteData>): RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>(), Filterable {
 //

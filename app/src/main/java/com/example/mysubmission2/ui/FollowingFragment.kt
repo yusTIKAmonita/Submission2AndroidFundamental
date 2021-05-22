@@ -1,5 +1,6 @@
-package com.example.mysubmission2
+package com.example.mysubmission2.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mysubmission2.R
 import com.example.mysubmission2.adapter.RecyclerViewAdapter
+import com.example.mysubmission2.data.FavoriteData
+import com.example.mysubmission2.data.UserData
 import com.example.mysubmission2.databinding.FragmentFollowingBinding
 import com.example.mysubmission2.viewmodel.FollowViewModel
 
@@ -17,6 +21,14 @@ class FollowingFragment : Fragment() {
     private lateinit var binding: FragmentFollowingBinding
     private lateinit var adapter: RecyclerViewAdapter
     private lateinit var followViewModel: FollowViewModel
+    private var favorites: FavoriteData? = null
+    private lateinit var dataFavorite: FavoriteData
+    private lateinit var data : UserData
+
+    companion object {
+        const val EXTRA_DETAIL = "extra_detail"
+        const val EXTRA_NOTE = "extra_note"
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -24,6 +36,7 @@ class FollowingFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("UseRequireInsteadOfGet")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -41,6 +54,22 @@ class FollowingFragment : Fragment() {
 
             }
         }
+
+//        favorites = activity!!.intent.getParcelableExtra(DetailActivity.EXTRA_NOTE)
+//        if (favorites != null) {
+//            dataFavorite = (activity!!.intent.getParcelableExtra(FollowersFragment.EXTRA_NOTE) as FavoriteData?)!!
+//            followViewModel.getUserFollow()
+//        } else {
+//            dataFavorite = FavoriteData()
+//        }
+
+        val favorite = activity?.intent?.getParcelableExtra<FavoriteData>(DetailActivity.EXTRA_NOTE)
+        favorite?.username?.let {
+            if (tab !=null) {
+                followViewModel.setUserFollow(it.toString(), tab)
+            }
+        }
+
         showLoading(true)
         followViewModel.getUserFollow().observe(viewLifecycleOwner, {
             adapter.setUser(it)
